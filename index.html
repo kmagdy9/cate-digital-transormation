@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATE | Digital Transformation Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Palette */
+            --bg-body: #f8fafc;
+            --text-main: #1e293b;
+            --text-secondary: #475569;
+            
+            /* Section Colors */
+            --erp-primary: #f59e0b; --erp-bg: #fff7ed;
+            --web-primary: #0284c7; --web-bg: #e0f2fe;
+            --crm-primary: #8b5cf6; --crm-bg: #f5f3ff;
+            --mkt-primary: #ef4444; --mkt-bg: #fef2f2;
+            
+            --radius: 20px;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #0f172a, #1e3a8a, #4338ca, #312e81);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-icon-box {
+            width: 120px; height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 60px rgba(59, 130, 246, 0.6);
+            margin-bottom: 30px;
+            animation: float 6s ease-in-out infinite;
+        }
+        .hero-icon-box i { font-size: 3.5rem; color: #60a5fa; }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.2); font-size: 0.9rem; margin-bottom: 20px;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+        h1 span { background: linear-gradient(to right, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-sub { font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin-bottom: 40px; }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.5rem; display: inline-block; position: relative; padding-bottom: 10px; }
+        .section-title h2::after { content: ''; display: block; width: 60%; height: 5px; background: #cbd5e1; margin: 10px auto 0; border-radius: 10px; }
+        
+        .erp-sec h2::after { background: var(--erp-primary); }
+        .web-sec h2::after { background: var(--web-primary); }
+        .crm-sec h2::after { background: var(--crm-primary); }
+        .mkt-sec h2::after { background: var(--mkt-primary); }
+
+        /* Grids */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        /* Pyramid Grid for Website */
+        .web-grid-pyramid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .span-center { grid-column: span 2; width: 100%; max-width: 500px; margin: 0 auto; }
+
+        .card {
+            background: white; padding: 35px; border-radius: var(--radius);
+            box-shadow: var(--card-shadow); transition: transform 0.3s ease;
+            border-top: 5px solid transparent; position: relative;
+        }
+        .card:hover { transform: translateY(-10px); }
+
+        .icon-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .icon-bg { width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        
+        .card h3 { font-size: 1.4rem; font-weight: 700; }
+        .card p { color: var(--text-secondary); margin-bottom: 10px; font-size: 1.05rem; }
+        
+        ul.custom-list { list-style: none; margin-top: 15px; }
+        ul.custom-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; }
+        ul.custom-list li i { margin-top: 5px; font-size: 0.9rem; }
+        ul.custom-list li strong { color: var(--text-main); font-weight: 700; }
+
+        /* --- THEMES --- */
+        /* ERP */
+        .erp-card { border-top-color: var(--erp-primary); }
+        .erp-card .icon-bg { background: var(--erp-bg); color: var(--erp-primary); }
+        .erp-detailed-item { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .erp-detailed-item:last-child { border-bottom: none; }
+        .erp-detailed-item h4 { color: var(--erp-primary); font-size: 1.1rem; margin-bottom: 5px; }
+        
+        /* Profile */
+        .profile-card { border-top-color: #10b981; }
+        .profile-card .icon-bg { background: #d1fae5; color: #10b981; }
+
+        /* CRM */
+        .crm-card { border-top-color: var(--crm-primary); }
+        .crm-card .icon-bg { background: var(--crm-bg); color: var(--crm-primary); }
+        
+        /* Marketing */
+        .mkt-card { background: linear-gradient(135deg, #fff 0%, #fff1f2 100%); border: 1px solid #ffe4e6; }
+        .mkt-icon { color: var(--mkt-primary); font-size: 2rem; margin-bottom: 15px; }
+        .mkt-list li i { color: var(--mkt-primary); }
+
+        /* Web Section */
+        .web-sec { background: linear-gradient(180deg, #f8fafc 0%, #f0f9ff 100%); }
+        .web-card-container { background: white; border-radius: 30px; padding: 50px; box-shadow: 0 20px 40px rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.1); }
+        .web-feature { text-align: center; padding: 20px; transition: 0.3s; border-radius: 20px; }
+        .web-feature:hover { background: #f0f9ff; }
+        .web-icon-large { width: 80px; height: 80px; margin: 0 auto 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+        .icon-crown { background: #fffbeb; color: #f59e0b; }
+        .icon-real { background: #f1f5f9; color: #334155; }
+        .icon-sales { background: #ecfdf5; color: #10b981; }
+        .web-feature h4 { font-size: 1.3rem; margin-bottom: 15px; font-weight: 800; }
+        .web-feature p { font-size: 1rem; color: #64748b; line-height: 1.7; }
+
+        /* Footer */
+        .footer { background: #0f172a; color: white; padding: 60px 20px; text-align: center; border-radius: 50px 50px 0 0; margin-top: 50px; }
+        .team-box { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .team-box span { color: #94a3b8; display: block; margin-bottom: 5px; }
+
+        /* Animations */
+        @keyframes float { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-20px);} }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- MOBILE RESPONSIVE RULES --- */
+        @media(max-width: 768px) {
+            /* Fonts */
+            h1 { font-size: 2.2rem; }
+            .hero-sub { font-size: 1.1rem; }
+            .section-title h2 { font-size: 2rem; }
+
+            /* Layout Stacking */
+            .grid-2, .grid-3, .web-grid-pyramid { grid-template-columns: 1fr; gap: 20px; }
+            .span-center { grid-column: span 1; width: 100%; }
+
+            /* Spacing */
+            section { padding: 50px 0; }
+            .card { padding: 25px; }
+            .web-card-container { padding: 25px; }
+            
+            /* Icons */
+            .hero-icon-box { width: 90px; height: 90px; }
+            .hero-icon-box i { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="hero-icon-box">
+            <i class="fas fa-rocket"></i>
+        </div>
+        <div class="hero-badge">CATE | Strategic Report</div>
+        <h1>تقرير الأداء الاستراتيجي<br><span>وخارطة التحول الرقمي</span></h1>
+        <p class="hero-sub">من عام التأسيس (2025) إلى عام الحصاد والنمو (2026)</p>
+        <p style="font-size: 1rem; opacity: 0.8; margin-top: 10px;">إلى السيد المهندس: عماد حامد – رئيس مجلس الإدارة</p>
+        <i class="fas fa-chevron-down" style="margin-top: 50px; animation: float 2s infinite;"></i>
+    </header>
+
+    <div class="container">
+
+        <section class="erp-sec reveal">
+            <div class="section-title">
+                <h2>نظام تخطيط الموارد (ERP)</h2>
+                <p>استراتيجية "إدارة التغيير" وليس مجرد شراء برامج</p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card erp-card">
+                    <div class="icon-header">
+                        <div class="icon-bg"><i class="fas fa-history"></i></div>
+                        <h3>المرحلة الأولى (2025): التأسيس</h3>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-bottom: 20px;">لم نقم بشراء "برنامج حسابات" فقط، بل أدرنا عملية <strong>Change Management</strong> شاملة:</p>
+                    
+                    <div class="erp-detailed-item">
+                        <h4><i class="fas fa-exclamation-triangle"></i> التحدي (The Challenge)</h4>
+                        <p>واجهنا عدم جاهزية الكادر البشري في الفروع للأنظمة المعقدة، ومخاطر فشل استثمار ضخم.</p>
+                    </div>
+
+                    <div class="erp-detailed-item">
+                        <h4><i class="fas fa-lightbulb"></i> الحل الذكي (The Solution)</h4>
+                        <p>طبقنا نظام <strong>DEXEFF</strong> كحل اقتصادي لتدريب الموظفين وكسر حاجز الخوف من التكنولوجيا.</p>
+                    </div>
+
+                    <div class="erp-detailed-item">
+                        <h4><i class="fas fa-check-double"></i> النتيجة (The Result)</h4>
+                        <p>تحويل عقلية الموظفين من "العمل اليدوي والعشوائية" إلى "الالتزام بالسيستم".</p>
+                    </div>
+                </div>
+
+                <div class="card erp-card">
+                    <div class="icon-header">
+                        <div class="icon-bg"><i class="fas fa-forward"></i></div>
+                        <h3>المرحلة الثانية (2026): الانطلاق</h3>
+                    </div>
+                    <p style="font-size: 0.9rem; margin-bottom: 20px;">الأرضية الآن ممهدة تماماً للترقية:</p>
+
+                    <div class="erp-detailed-item">
+                        <h4><i class="fas fa-rocket"></i> الهدف (Target)</h4>
+                        <p>الترقية إلى <strong>Mini-Odoo</strong> (تمهيداً لـ Odoo Enterprise) على أرضية صلبة.</p>
+                    </div>
+
+                    <div class="erp-detailed-item">
+                        <h4><i class="fas fa-cogs"></i> القيمة المضافة (Value)</h4>
+                        <ul class="custom-list" style="margin-top: 5px;">
+                            <li><i class="fas fa-check"></i> <strong>كفاءة التشغيل:</strong> دورة عمل مميكنة بالكامل.</li>
+                            <li><i class="fas fa-check"></i> <strong>دقة البيانات:</strong> ضبط المخزون والماليات.</li>
+                        </ul>
+                    </div>
+
+                    <div class="erp-detailed-item" style="background: #fff7ed; padding: 15px; border-radius: 10px; border: none; margin-top: 20px;">
+                        <h4 style="margin-bottom: 0; font-size: 1rem;"><i class="fas fa-info-circle"></i> النجاح الحقيقي:</h4>
+                        <p style="font-size: 0.95rem;">الموظفون هم من يطالبون الآن بأنظمة أكثر تطوراً.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <div class="section-title">
+                <h2 style="border-bottom-color: #10b981;">الهوية والمرئيات</h2>
+            </div>
+            <div class="grid-2">
+                <div class="card profile-card">
+                    <div class="icon-header">
+                        <div class="icon-bg"><i class="fas fa-camera"></i></div>
+                        <h3>التصوير والتوثيق (Media)</h3>
+                    </div>
+                    <p>تم تنفيذ جلسات تصوير وتوثيق فيديو شاملة غطت كافة قطاعات الشركة:</p>
+                    <ul class="custom-list">
+                        <li><i class="fas fa-check" style="color:#10b981;"></i> الإدارة والمكاتب الإدارية.</li>
+                        <li><i class="fas fa-check" style="color:#10b981;"></i> فريق المبيعات (Sales Force).</li>
+                        <li><i class="fas fa-check" style="color:#10b981;"></i> المخازن وورش الصيانة.</li>
+                    </ul>
+                    <p style="margin-top: 15px; border-right: 3px solid #10b981; padding-right: 10px; font-weight: bold; color: #1e293b;">
+                        "هذه ليست مجرد صور، بل هي إثبات لـ 'حجم وقوة الشركة' على أرض الواقع."
+                    </p>
+                </div>
+                <div class="card profile-card">
+                    <div class="icon-header">
+                        <div class="icon-bg"><i class="fas fa-qrcode"></i></div>
+                        <h3>قوة الـ Company Profile</h3>
+                    </div>
+                    <p>دمجنا الـ Profile في QR-Code على كروت الموظفين.</p>
+                    <ul class="custom-list" style="margin-top: 10px;">
+                        <li><i class="fas fa-star" style="color:#10b981;"></i> <strong>ميزة تنافسية:</strong> يضع العميل فوراً أمام شركة (Class-A).</li>
+                        <li><i class="fas fa-handshake" style="color:#10b981;"></i> <strong>سهولة الإقناع:</strong> لم يعد رجل المبيعات بحاجة للشرح الطويل.</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-secondary);">
+                        الرسالة للعميل واضحة: <strong style="color: #10b981;">"أنت تتعامل مع كيان مؤسسي ضخم، وليس مجرد مكتب توريد".</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="web-sec reveal">
+            <div class="section-title">
+                <h2>الموقع الإلكتروني (Website)</h2>
+                <p>واجهة عالمية: الأفضل في فئته</p>
+            </div>
+            <div class="web-card-container">
+                <div class="web-grid-pyramid">
+                    <div class="web-feature">
+                        <div class="web-icon-large icon-crown"><i class="fas fa-crown"></i></div>
+                        <h4 style="color: #b45309;">تصميم يعكس الفخامة<br>(Premium Look)</h4>
+                        <p>تصميم يعطي انطباعاً فورياً بالاحترافية والثقة. واجهة تليق باسم CATE وشراكتها مع Atlas Copco.</p>
+                    </div>
+                    <div class="web-feature">
+                        <div class="web-icon-large icon-real"><i class="fas fa-users-viewfinder"></i></div>
+                        <h4 style="color: #1e293b;">المحتوى الواقعي<br>(Credibility)</h4>
+                        <p>استغلالاً للصور والفيديوهات التي أنتجناها، الموقع يعرض مقراتنا وفريقنا الحقيقي، مما يبني جسراً من الثقة.</p>
+                    </div>
+                    <div class="web-feature span-center">
+                        <div class="web-icon-large icon-sales"><i class="fas fa-funnel-dollar"></i></div>
+                        <h4 style="color: #047857;">أداة بيعية<br>(Sales Tool)</h4>
+                        <p>الموقع ليس للعرض فقط، بل مصمم لاستقبال العملاء وتوجيههم لطلب عروض أسعار (Leads)، ليكون واجهتنا الرابحة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="crm-sec reveal">
+            <div class="section-title">
+                <h2>نظام الـ CRM (عقل الشركة)</h2>
+                <p>الشراكة الاستراتيجية مع Brightery</p>
+            </div>
+            <div class="grid-3">
+                <div class="card crm-card">
+                    <div class="icon-bg" style="margin-bottom: 15px;"><i class="fas fa-wrench"></i></div>
+                    <h3>إدارة الصيانة</h3>
+                    <ul class="custom-list">
+                        <li><i class="fas fa-dot-circle" style="color:var(--crm-primary);"></i> تسجيل تاريخ الماكينة.</li>
+                        <li><i class="fas fa-dot-circle" style="color:var(--crm-primary);"></i> تنبيه آلي بمواعيد الصيانة.</li>
+                        <li><i class="fas fa-coins" style="color:gold;"></i> <strong>النتيجة:</strong> ضمان دخل مستمر.</li>
+                    </ul>
+                </div>
+                <div class="card crm-card">
+                    <div class="icon-bg" style="margin-bottom: 15px;"><i class="fas fa-database"></i></div>
+                    <h3>حفظ الأصول</h3>
+                    <p>الشركة ستمتلك قاعدة بيانات مركزية لكل عميل وكل ماكينة.</p>
+                    <p style="margin-top: 10px; font-weight: bold;">"المعلومات هي رأس المال الحقيقي"</p>
+                </div>
+                <div class="card crm-card">
+                    <div class="icon-bg" style="margin-bottom: 15px;"><i class="fas fa-chart-line"></i></div>
+                    <h3>إدارة المبيعات</h3>
+                    <ul class="custom-list">
+                        <li><i class="fas fa-check"></i> مراقبة الـ Pipeline.</li>
+                        <li><i class="fas fa-check"></i> عدم ضياع أي فرصة (Lead).</li>
+                        <li><i class="fas fa-check"></i> متابعة دقيقة حتى الفاتورة.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mkt-sec reveal">
+            <div class="section-title">
+                <h2>التسويق (Marketing)</h2>
+                <p>وقود الانطلاق في 2026</p>
+            </div>
+            <div class="grid-2">
+                <div class="card mkt-card">
+                    <div class="mkt-icon"><i class="fas fa-question"></i></div>
+                    <h3>لماذا التسويق الآن؟</h3>
+                    <p>في 2025، التسويق بدون (CRM/Website) كان هدراً للمال. الآن، نحن نمتلك "الماكينة" الجاهزة لاستقبال العملاء.</p>
+                </div>
+                <div class="card mkt-card">
+                    <div class="mkt-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>أهمية التسويق في 2026</h3>
+                    <ul class="custom-list mkt-list">
+                        <li><i class="fas fa-bullseye"></i> <div><strong>الاستحواذ:</strong> الوصول لشرائح عملاء جديدة.</div></li>
+                        <li><i class="fas fa-tags"></i> <div><strong>تبرير السعر:</strong> الظهور بمظهر الخبير.</div></li>
+                        <li><i class="fas fa-funnel-dollar"></i> <div><strong>تغذية الـ CRM:</strong> ضخ عملاء جدد.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <i class="fas fa-flag-checkered" style="font-size: 3rem; color: #10b981; margin-bottom: 20px;"></i>
+            <h2 style="margin-bottom: 20px;">الخلاصة</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                بنينا في 2025 بنية تحتية رقمية تضاهي الشركات العالمية.<br>
+                <strong style="color: #60a5fa;">في 2026، سنقوم بتشغيل هذه المنظومة بأقصى طاقة لجني الثمار.</strong>
+            </p>
+            <div class="team-box">
+                <span>فريق تطوير الأعمال والمنتج</span>
+                <h3 style="font-weight: 500;">خالد مجدي &nbsp;|&nbsp; عبد الرحمن عماد &nbsp;|&nbsp; محمود أسامة</h3>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal();
+    </script>
+
+</body>
+</html>
