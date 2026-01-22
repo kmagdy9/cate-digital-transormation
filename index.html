@@ -17,7 +17,7 @@
             /* Section Colors */
             --erp-primary: #f59e0b; --erp-bg: #fff7ed;
             --web-primary: #0284c7; --web-bg: #e0f2fe;
-            --crm-primary: #8b5cf6; --crm-bg: #f5f3ff;
+            --crm-primary: #7c3aed; --crm-bg: #f5f3ff;
             --mkt-primary: #ef4444; --mkt-bg: #fef2f2;
             
             --radius: 20px;
@@ -107,7 +107,7 @@
         .card:hover { transform: translateY(-10px); }
 
         .icon-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .icon-bg { width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .icon-bg { width: 50px; height: 50px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
         
         .card h3 { font-size: 1.4rem; font-weight: 700; }
         .card p { color: var(--text-secondary); margin-bottom: 10px; font-size: 1.05rem; }
@@ -129,10 +129,97 @@
         .profile-card { border-top-color: #10b981; }
         .profile-card .icon-bg { background: #d1fae5; color: #10b981; }
 
-        /* CRM */
-        .crm-card { border-top-color: var(--crm-primary); }
+        /* --- NEW CRM SPECIFIC STYLES --- */
+        .crm-sec { 
+            background: linear-gradient(180deg, #fcfaff 0%, #f3f0ff 100%); 
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        .crm-sec::before {
+            content: ''; position: absolute; top: -100px; right: -100px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0; pointer-events: none;
+        }
+
+        .crm-intro-box {
+            background: white; border-radius: 20px; padding: 40px; margin-bottom: 50px;
+            box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.15);
+            border-right: 5px solid var(--crm-primary);
+            display: flex; gap: 20px; align-items: flex-start;
+            position: relative; z-index: 1;
+        }
+        .crm-intro-icon {
+            font-size: 2.5rem; color: var(--crm-primary);
+            background: var(--crm-bg); width: 70px; height: 70px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; flex-shrink: 0;
+        }
+
+        .crm-category-badge {
+            display: inline-block; background: var(--crm-bg); color: var(--crm-primary);
+            padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem;
+            margin: 40px 0 20px; border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .crm-card { border-top-color: var(--crm-primary); height: 100%; }
         .crm-card .icon-bg { background: var(--crm-bg); color: var(--crm-primary); }
-        
+
+        /* Pipeline Visuals */
+        .pipeline-container {
+            display: flex; justify-content: space-between; align-items: center;
+            background: #f8fafc; padding: 20px; border-radius: 15px; margin-top: 15px;
+            position: relative;
+        }
+        .pipeline-step-item {
+            text-align: center; position: relative; z-index: 2; flex: 1;
+        }
+        .p-icon {
+            width: 35px; height: 35px; background: white; border: 2px solid #cbd5e1;
+            color: #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 8px; font-size: 0.8rem; transition: 0.3s;
+        }
+        .pipeline-step-item.active .p-icon {
+            border-color: var(--crm-primary); background: var(--crm-primary); color: white;
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+        }
+        .pipeline-step-item span { font-size: 0.75rem; font-weight: bold; color: #64748b; }
+        .pipeline-step-item.active span { color: var(--crm-primary); }
+        .pipeline-line {
+            position: absolute; top: 38px; left: 10%; right: 10%; height: 2px; background: #e2e8f0; z-index: 1;
+        }
+
+        /* Alert Cards */
+        .alert-card {
+            background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 15px;
+            display: flex; gap: 15px; margin-bottom: 10px; align-items: center;
+        }
+        .alert-icon-box {
+            width: 40px; height: 40px; background: #fef3c7; color: #d97706;
+            border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+        }
+
+        /* Dashboard Widget */
+        .dashboard-widget {
+            background: #1e293b; border-radius: 20px; padding: 30px; color: white;
+            box-shadow: 0 20px 50px -10px rgba(30, 41, 59, 0.5);
+            position: relative; overflow: hidden; height: 100%;
+        }
+        .dashboard-widget::after {
+            content: ''; position: absolute; top: -50%; right: -50%;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            transform: rotate(45deg);
+        }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .live-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; }
+        .stat-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+        .stat-info { font-size: 0.9rem; color: #94a3b8; }
+        .stat-val { font-weight: bold; color: white; }
+        .progress-track { width: 100%; height: 6px; background: #334155; border-radius: 10px; margin-top: 5px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 10px; }
+
         /* Marketing */
         .mkt-card { background: linear-gradient(135deg, #fff 0%, #fff1f2 100%); border: 1px solid #ffe4e6; }
         .mkt-icon { color: var(--mkt-primary); font-size: 2rem; margin-bottom: 15px; }
@@ -150,35 +237,68 @@
         .web-feature h4 { font-size: 1.3rem; margin-bottom: 15px; font-weight: 800; }
         .web-feature p { font-size: 1rem; color: #64748b; line-height: 1.7; }
 
-        /* Footer */
+        /* --- Footer & Team Highlight --- */
         .footer { background: #0f172a; color: white; padding: 60px 20px; text-align: center; border-radius: 50px 50px 0 0; margin-top: 50px; }
-        .team-box { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .team-box span { color: #94a3b8; display: block; margin-bottom: 5px; }
+        
+        .team-box { 
+            margin-top: 50px; 
+            padding: 40px; 
+            background: linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px; 
+            position: relative;
+            display: inline-block;
+            min-width: 60%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .team-box::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #10b981, #3b82f6, #f59e0b);
+        }
+        .team-label { 
+            color: #94a3b8; font-size: 0.9rem; letter-spacing: 1px; 
+            margin-bottom: 15px; display: block; text-transform: uppercase; font-weight: bold;
+        }
+        .team-names-container {
+            font-size: 1.5rem; font-weight: 800; color: white; line-height: 1.8;
+        }
+        .name-highlight {
+            color: #fff; display: inline-block; text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            transition: 0.3s; cursor: default;
+        }
+        .name-highlight:hover {
+            color: #10b981; transform: scale(1.05);
+        }
+        .divider { color: #334155; margin: 0 15px; font-weight: 300; }
+
+        @media(max-width: 768px) {
+            .team-names-container { font-size: 1.2rem; display: flex; flex-direction: column; gap: 10px; }
+            .divider { display: none; }
+            .team-box { width: 100%; }
+        }
 
         /* Animations */
         @keyframes float { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-20px);} }
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal.active .stat-fill.w-85 { width: 85%; }
+        .reveal.active .stat-fill.w-90 { width: 90%; }
+        .reveal.active .stat-fill.w-70 { width: 70%; }
 
         /* --- MOBILE RESPONSIVE RULES --- */
         @media(max-width: 768px) {
-            /* Fonts */
             h1 { font-size: 2.2rem; }
             .hero-sub { font-size: 1.1rem; }
             .section-title h2 { font-size: 2rem; }
-
-            /* Layout Stacking */
             .grid-2, .grid-3, .web-grid-pyramid { grid-template-columns: 1fr; gap: 20px; }
             .span-center { grid-column: span 1; width: 100%; }
-
-            /* Spacing */
             section { padding: 50px 0; }
             .card { padding: 25px; }
-            .web-card-container { padding: 25px; }
-            
-            /* Icons */
-            .hero-icon-box { width: 90px; height: 90px; }
-            .hero-icon-box i { font-size: 2.5rem; }
+            .crm-intro-box { flex-direction: column; text-align: center; }
+            .crm-intro-icon { margin: 0 auto; }
+            .pipeline-container { flex-wrap: wrap; gap: 10px; }
+            .pipeline-line { display: none; }
         }
     </style>
 </head>
@@ -202,7 +322,6 @@
                 <h2>نظام تخطيط الموارد (ERP)</h2>
                 <p>استراتيجية "إدارة التغيير" وليس مجرد شراء برامج</p>
             </div>
-            
             <div class="grid-2">
                 <div class="card erp-card">
                     <div class="icon-header">
@@ -210,46 +329,35 @@
                         <h3>المرحلة الأولى (2025): التأسيس</h3>
                     </div>
                     <p style="font-size: 0.9rem; margin-bottom: 20px;">لم نقم بشراء "برنامج حسابات" فقط، بل أدرنا عملية <strong>Change Management</strong> شاملة:</p>
-                    
                     <div class="erp-detailed-item">
                         <h4><i class="fas fa-exclamation-triangle"></i> التحدي (The Challenge)</h4>
                         <p>واجهنا عدم جاهزية الكادر البشري في الفروع للأنظمة المعقدة، ومخاطر فشل استثمار ضخم.</p>
                     </div>
-
                     <div class="erp-detailed-item">
                         <h4><i class="fas fa-lightbulb"></i> الحل الذكي (The Solution)</h4>
                         <p>طبقنا نظام <strong>DEXEFF</strong> كحل اقتصادي لتدريب الموظفين وكسر حاجز الخوف من التكنولوجيا.</p>
                     </div>
-
                     <div class="erp-detailed-item">
                         <h4><i class="fas fa-check-double"></i> النتيجة (The Result)</h4>
                         <p>تحويل عقلية الموظفين من "العمل اليدوي والعشوائية" إلى "الالتزام بالسيستم".</p>
                     </div>
                 </div>
-
                 <div class="card erp-card">
                     <div class="icon-header">
                         <div class="icon-bg"><i class="fas fa-forward"></i></div>
                         <h3>المرحلة الثانية (2026): الانطلاق</h3>
                     </div>
                     <p style="font-size: 0.9rem; margin-bottom: 20px;">الأرضية الآن ممهدة تماماً للترقية:</p>
-
                     <div class="erp-detailed-item">
                         <h4><i class="fas fa-rocket"></i> الهدف (Target)</h4>
                         <p>الترقية إلى <strong>Mini-Odoo</strong> (تمهيداً لـ Odoo Enterprise) على أرضية صلبة.</p>
                     </div>
-
                     <div class="erp-detailed-item">
                         <h4><i class="fas fa-cogs"></i> القيمة المضافة (Value)</h4>
                         <ul class="custom-list" style="margin-top: 5px;">
                             <li><i class="fas fa-check"></i> <strong>كفاءة التشغيل:</strong> دورة عمل مميكنة بالكامل.</li>
                             <li><i class="fas fa-check"></i> <strong>دقة البيانات:</strong> ضبط المخزون والماليات.</li>
                         </ul>
-                    </div>
-
-                    <div class="erp-detailed-item" style="background: #fff7ed; padding: 15px; border-radius: 10px; border: none; margin-top: 20px;">
-                        <h4 style="margin-bottom: 0; font-size: 1rem;"><i class="fas fa-info-circle"></i> النجاح الحقيقي:</h4>
-                        <p style="font-size: 0.95rem;">الموظفون هم من يطالبون الآن بأنظمة أكثر تطوراً.</p>
                     </div>
                 </div>
             </div>
@@ -271,9 +379,6 @@
                         <li><i class="fas fa-check" style="color:#10b981;"></i> فريق المبيعات (Sales Force).</li>
                         <li><i class="fas fa-check" style="color:#10b981;"></i> المخازن وورش الصيانة.</li>
                     </ul>
-                    <p style="margin-top: 15px; border-right: 3px solid #10b981; padding-right: 10px; font-weight: bold; color: #1e293b;">
-                        "هذه ليست مجرد صور، بل هي إثبات لـ 'حجم وقوة الشركة' على أرض الواقع."
-                    </p>
                 </div>
                 <div class="card profile-card">
                     <div class="icon-header">
@@ -285,9 +390,6 @@
                         <li><i class="fas fa-star" style="color:#10b981;"></i> <strong>ميزة تنافسية:</strong> يضع العميل فوراً أمام شركة (Class-A).</li>
                         <li><i class="fas fa-handshake" style="color:#10b981;"></i> <strong>سهولة الإقناع:</strong> لم يعد رجل المبيعات بحاجة للشرح الطويل.</li>
                     </ul>
-                    <p style="margin-top: 15px; font-size: 0.95rem; color: var(--text-secondary);">
-                        الرسالة للعميل واضحة: <strong style="color: #10b981;">"أنت تتعامل مع كيان مؤسسي ضخم، وليس مجرد مكتب توريد".</strong>
-                    </p>
                 </div>
             </div>
         </section>
@@ -319,38 +421,175 @@
         </section>
 
         <section class="crm-sec reveal">
-            <div class="section-title">
-                <h2>نظام الـ CRM (عقل الشركة)</h2>
-                <p>الشراكة الاستراتيجية مع Brightery</p>
-            </div>
-            <div class="grid-3">
-                <div class="card crm-card">
-                    <div class="icon-bg" style="margin-bottom: 15px;"><i class="fas fa-wrench"></i></div>
-                    <h3>إدارة الصيانة</h3>
-                    <ul class="custom-list">
-                        <li><i class="fas fa-dot-circle" style="color:var(--crm-primary);"></i> تسجيل تاريخ الماكينة.</li>
-                        <li><i class="fas fa-dot-circle" style="color:var(--crm-primary);"></i> تنبيه آلي بمواعيد الصيانة.</li>
-                        <li><i class="fas fa-coins" style="color:gold;"></i> <strong>النتيجة:</strong> ضمان دخل مستمر.</li>
-                    </ul>
+            <div class="container">
+                <div class="section-title">
+                    <h2>نظام الـ CRM (عقل الشركة)</h2>
+                    <p>الشراكة الاستراتيجية مع Brightery</p>
                 </div>
-                <div class="card crm-card">
-                    <div class="icon-bg" style="margin-bottom: 15px;"><i class="fas fa-database"></i></div>
-                    <h3>حفظ الأصول</h3>
-                    <p>الشركة ستمتلك قاعدة بيانات مركزية لكل عميل وكل ماكينة.</p>
-                    <p style="margin-top: 10px; font-weight: bold;">"المعلومات هي رأس المال الحقيقي"</p>
+        
+                <div class="crm-intro-box">
+                    <div class="crm-intro-icon"><i class="fas fa-medal"></i></div>
+                    <div>
+                        <h3 style="margin-bottom: 10px;">لماذا الآن؟</h3>
+                        <p style="color: #475569; line-height: 1.7;">
+                            كوننا أكبر وكيل لـ Atlas Copco بدون CRM منذ 2011 هي <strong>نقطة قوة وليست ضعف</strong>.
+                            <br>هذا يعني أننا سنبني النظام على "نظافة" بدون مشاكل قديمة (Legacy Issues)، وسيكون مفصلاً على واقعنا الحقيقي.
+                        </p>
+                    </div>
                 </div>
-                <div class="card crm-card">
-                    <div class="icon-bg" style="margin-bottom: 15px;"><i class="fas fa-chart-line"></i></div>
-                    <h3>إدارة المبيعات</h3>
-                    <ul class="custom-list">
-                        <li><i class="fas fa-check"></i> مراقبة الـ Pipeline.</li>
-                        <li><i class="fas fa-check"></i> عدم ضياع أي فرصة (Lead).</li>
-                        <li><i class="fas fa-check"></i> متابعة دقيقة حتى الفاتورة.</li>
-                    </ul>
+        
+                <div style="text-align: center;"><span class="crm-category-badge">أولاً: العائد على الكيان (Company Level)</span></div>
+                <div class="grid-3">
+                    <div class="card crm-card">
+                        <div class="icon-bg"><i class="fas fa-database"></i></div>
+                        <h3>مصدر موحد للحقيقة</h3>
+                        <p style="font-size: 0.85rem; opacity: 0.8;">(Single Source of Truth)</p>
+                        <ul class="custom-list">
+                            <li><i class="fas fa-times-circle" style="color:#ef4444;"></i> <strong>قبل:</strong> بيانات متناثرة (Excel, WhatsApp).</li>
+                            <li><i class="fas fa-check-circle" style="color:#10b981;"></i> <strong>بعد:</strong> ملف كامل لكل عميل ومعدة في مكان واحد.</li>
+                        </ul>
+                    </div>
+                    <div class="card crm-card">
+                        <div class="icon-bg"><i class="fas fa-fingerprint"></i></div>
+                        <h3>ملكية كاملة (Asset)</h3>
+                        <p>النظام ليس تأجيراً (SaaS) بل ملك للشركة 100%.</p>
+                        <ul class="custom-list">
+                            <li><i class="fas fa-lock-open"></i> لا قيود على عدد المستخدمين.</li>
+                            <li><i class="fas fa-puzzle-piece"></i> قابل للتطوير (IoT / Mobile App).</li>
+                        </ul>
+                    </div>
+                    <div class="card crm-card">
+                        <div class="icon-bg"><i class="fas fa-handshake"></i></div>
+                        <h3>مكانة Atlas Copco</h3>
+                        <p>نظام قوي يتماشى مع المعايير العالمية.</p>
+                        <ul class="custom-list">
+                            <li><i class="fas fa-star"></i> يسهل عمليات الـ Audit.</li>
+                            <li><i class="fas fa-certificate"></i> يثبت أن CATE شريك استراتيجي.</li>
+                        </ul>
+                    </div>
                 </div>
+        
+                <div style="text-align: center;"><span class="crm-category-badge">ثانياً: عصب الشركة (Sales & Operations)</span></div>
+                <div class="grid-2">
+                    
+                    <div class="card crm-card">
+                        <div class="icon-header">
+                            <div class="icon-bg"><i class="fas fa-truck-moving"></i></div>
+                            <h3>مبيعات الماكينات (Machines)</h3>
+                        </div>
+                        <p>تحويل المبيعات من "اجتهاد فردي" إلى "منظومة Pipeline".</p>
+                        
+                        <div class="pipeline-container">
+                            <div class="pipeline-line"></div>
+                            <div class="pipeline-step-item active">
+                                <div class="p-icon"><i class="fas fa-filter"></i></div>
+                                <span>Lead</span>
+                            </div>
+                            <div class="pipeline-step-item active">
+                                <div class="p-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                                <span>Quotation</span>
+                            </div>
+                            <div class="pipeline-step-item active">
+                                <div class="p-icon"><i class="fas fa-handshake"></i></div>
+                                <span>Deal</span>
+                            </div>
+                            <div class="pipeline-step-item">
+                                <div class="p-icon"><i class="fas fa-file-contract"></i></div>
+                                <span>Invoice</span>
+                            </div>
+                        </div>
+        
+                        <ul class="custom-list" style="margin-top: 20px;">
+                            <li><i class="fas fa-eye"></i> رؤية كاملة للصفقات (لماذا خسرنا؟ ولماذا كسبنا؟).</li>
+                            <li><i class="fas fa-link"></i> ربط الماكينة بالعميل لبناء (Customer Lifetime Value).</li>
+                        </ul>
+                    </div>
+        
+                    <div class="card crm-card" style="border-top-color: #f59e0b;">
+                        <div class="icon-header">
+                            <div class="icon-bg" style="background: #fffbeb; color: #f59e0b;"><i class="fas fa-chart-line"></i></div>
+                            <h3>ما بعد البيع (Predictive Sales)</h3>
+                        </div>
+                        <p style="margin-bottom: 20px;">النظام يعمل كـ "مساعد ذكي" يخبرنا ماذا يحتاج العميل قبل أن يطلب:</p>
+                        
+                        <div class="alert-card">
+                            <div class="alert-icon-box"><i class="fas fa-bell"></i></div>
+                            <div>
+                                <strong style="display:block; font-size:0.9rem;">تنبيه آلي</strong>
+                                <span style="font-size:0.85rem; color:#64748b;">قرب انتهاء عقود الصيانة</span>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-card">
+                            <div class="alert-icon-box"><i class="fas fa-cogs"></i></div>
+                            <div>
+                                <strong style="display:block; font-size:0.9rem;">تغيير قطع الغيار</strong>
+                                <span style="font-size:0.85rem; color:#64748b;">تنبيه بمواعيد الـ Spare Parts القادمة</span>
+                            </div>
+                        </div>
+                        
+                        <p style="font-size:0.85rem; text-align: center; margin-top: 10px; font-weight: bold; color: #f59e0b;">النتيجة: لا توجد عقد يُنسى، ولا فرصة تضيع.</p>
+                    </div>
+                </div>
+        
+                <div style="text-align: center;"><span class="crm-category-badge">ثالثاً: الصيانة والإدارة العليا</span></div>
+                <div class="grid-2">
+                    
+                    <div class="card crm-card">
+                        <div class="icon-header">
+                            <div class="icon-bg"><i class="fas fa-wrench"></i></div>
+                            <h3>كفاءة التشغيل والصيانة</h3>
+                        </div>
+                        <p>الانتقال من "إطفاء الحرائق" (Breakdown) إلى "الصيانة المخططة" (Preventive).</p>
+                        <ul class="custom-list" style="margin-top: 20px;">
+                            <li><i class="fas fa-history"></i> <strong>سجل كامل (Full History):</strong> الفني يعرف تاريخ الماكينة، القطع السابقة، والأعطال قبل التحرك.</li>
+                            <li><i class="fas fa-user-clock"></i> <strong>إدارة الفنيين:</strong> توزيع ذكي للمهام (Tasks) بناءً على الكفاءة والسرعة.</li>
+                        </ul>
+                    </div>
+        
+                    <div class="dashboard-widget">
+                        <div class="dash-header">
+                            <h3 style="font-size: 1.2rem; color: white;"><i class="fas fa-tachometer-alt" style="margin-left:10px;"></i> لوحة الإدارة</h3>
+                            <div style="display: flex; align-items: center; gap: 5px; font-size: 0.8rem; background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 20px;">
+                                <div class="live-dot"></div> Live Data
+                            </div>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 25px;">اتخاذ القرارات بناءً على أرقام لحظية:</p>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <div class="stat-row">
+                                <span class="stat-info">تحقيق المستهدف (Target)</span>
+                                <span class="stat-val">85%</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill reveal" style="width: 85%; background: #10b981;"></div></div>
+                        </div>
+        
+                        <div style="margin-bottom: 20px;">
+                            <div class="stat-row">
+                                <span class="stat-info">تجديد العقود (Renewals)</span>
+                                <span class="stat-val">90%</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill reveal" style="width: 90%; background: #3b82f6;"></div></div>
+                        </div>
+        
+                        <div>
+                            <div class="stat-row">
+                                <span class="stat-info">كفاءة الفنيين (Efficiency)</span>
+                                <span class="stat-val">70%</span>
+                            </div>
+                            <div class="progress-track"><div class="progress-fill reveal" style="width: 70%; background: #f59e0b;"></div></div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div style="text-align: center; margin-top: 60px;">
+                    <p style="font-size: 1.4rem; font-weight: 800; color: var(--crm-primary); background: #f5f3ff; display: inline-block; padding: 15px 30px; border-radius: 50px;">
+                        "من شركة تعتمد على الأشخاص... إلى مؤسسة تقودها البيانات"
+                    </p>
+                </div>
+        
             </div>
         </section>
-
         <section class="mkt-sec reveal">
             <div class="section-title">
                 <h2>التسويق (Marketing)</h2>
@@ -380,14 +619,23 @@
         <div class="container">
             <i class="fas fa-flag-checkered" style="font-size: 3rem; color: #10b981; margin-bottom: 20px;"></i>
             <h2 style="margin-bottom: 20px;">الخلاصة</h2>
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px; line-height: 1.8;">
                 بنينا في 2025 بنية تحتية رقمية تضاهي الشركات العالمية.<br>
                 <strong style="color: #60a5fa;">في 2026، سنقوم بتشغيل هذه المنظومة بأقصى طاقة لجني الثمار.</strong>
             </p>
-            <div class="team-box">
-                <span>فريق تطوير الأعمال والمنتج</span>
-                <h3 style="font-weight: 500;">خالد مجدي &nbsp;|&nbsp; عبد الرحمن عماد &nbsp;|&nbsp; محمود أسامة</h3>
+
+            <div class="team-box reveal">
+                <span class="team-label"><i class="fas fa-layer-group" style="margin-left:8px;"></i> فريق تطوير الأعمال والمنتج</span>
+                <div class="team-names-container">
+                    <span class="name-highlight">خالد مجدي</span>
+                    <span class="divider">|</span>
+                    <span class="name-highlight">عبد الرحمن عماد</span>
+                    <span class="divider">|</span>
+                    <span class="name-highlight">محمود أسامة</span>
+                </div>
             </div>
+            
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.4;">&copy; 2026 CATE - All Rights Reserved</p>
         </div>
     </footer>
 
