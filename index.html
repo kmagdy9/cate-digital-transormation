@@ -129,89 +129,25 @@
         .profile-card { border-top-color: #10b981; }
         .profile-card .icon-bg { background: #d1fae5; color: #10b981; }
 
-        /* --- NEW CRM SPECIFIC STYLES --- */
-        .crm-sec { 
-            background: linear-gradient(180deg, #fcfaff 0%, #f3f0ff 100%); 
-            position: relative; 
-            overflow: hidden; 
-        }
-
-        .crm-sec::before {
-            content: ''; position: absolute; top: -100px; right: -100px;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(255,255,255,0) 70%);
-            z-index: 0; pointer-events: none;
-        }
-
-        .crm-intro-box {
-            background: white; border-radius: 20px; padding: 40px; margin-bottom: 50px;
-            box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.15);
-            border-right: 5px solid var(--crm-primary);
-            display: flex; gap: 20px; align-items: flex-start;
-            position: relative; z-index: 1;
-        }
-        .crm-intro-icon {
-            font-size: 2.5rem; color: var(--crm-primary);
-            background: var(--crm-bg); width: 70px; height: 70px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; flex-shrink: 0;
-        }
-
-        .crm-category-badge {
-            display: inline-block; background: var(--crm-bg); color: var(--crm-primary);
-            padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem;
-            margin: 40px 0 20px; border: 1px solid rgba(124, 58, 237, 0.2);
-        }
-
+        /* CRM Section */
+        .crm-sec { background: linear-gradient(180deg, #fcfaff 0%, #f3f0ff 100%); position: relative; overflow: hidden; }
+        .crm-intro-box { background: white; border-radius: 20px; padding: 40px; margin-bottom: 50px; box-shadow: 0 10px 40px -10px rgba(124, 58, 237, 0.15); border-right: 5px solid var(--crm-primary); display: flex; gap: 20px; align-items: flex-start; position: relative; z-index: 1; }
+        .crm-intro-icon { font-size: 2.5rem; color: var(--crm-primary); background: var(--crm-bg); width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; }
+        .crm-category-badge { display: inline-block; background: var(--crm-bg); color: var(--crm-primary); padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 0.9rem; margin: 40px 0 20px; border: 1px solid rgba(124, 58, 237, 0.2); }
         .crm-card { border-top-color: var(--crm-primary); height: 100%; }
         .crm-card .icon-bg { background: var(--crm-bg); color: var(--crm-primary); }
-
-        /* Pipeline Visuals */
-        .pipeline-container {
-            display: flex; justify-content: space-between; align-items: center;
-            background: #f8fafc; padding: 20px; border-radius: 15px; margin-top: 15px;
-            position: relative;
-        }
-        .pipeline-step-item {
-            text-align: center; position: relative; z-index: 2; flex: 1;
-        }
-        .p-icon {
-            width: 35px; height: 35px; background: white; border: 2px solid #cbd5e1;
-            color: #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 8px; font-size: 0.8rem; transition: 0.3s;
-        }
-        .pipeline-step-item.active .p-icon {
-            border-color: var(--crm-primary); background: var(--crm-primary); color: white;
-            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
-        }
+        
+        /* CRM Specific Elements */
+        .pipeline-container { display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 20px; border-radius: 15px; margin-top: 15px; position: relative; }
+        .pipeline-step-item { text-align: center; position: relative; z-index: 2; flex: 1; }
+        .p-icon { width: 35px; height: 35px; background: white; border: 2px solid #cbd5e1; color: #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-size: 0.8rem; transition: 0.3s; }
+        .pipeline-step-item.active .p-icon { border-color: var(--crm-primary); background: var(--crm-primary); color: white; box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2); }
         .pipeline-step-item span { font-size: 0.75rem; font-weight: bold; color: #64748b; }
         .pipeline-step-item.active span { color: var(--crm-primary); }
-        .pipeline-line {
-            position: absolute; top: 38px; left: 10%; right: 10%; height: 2px; background: #e2e8f0; z-index: 1;
-        }
-
-        /* Alert Cards */
-        .alert-card {
-            background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 15px;
-            display: flex; gap: 15px; margin-bottom: 10px; align-items: center;
-        }
-        .alert-icon-box {
-            width: 40px; height: 40px; background: #fef3c7; color: #d97706;
-            border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-        }
-
-        /* Dashboard Widget */
-        .dashboard-widget {
-            background: #1e293b; border-radius: 20px; padding: 30px; color: white;
-            box-shadow: 0 20px 50px -10px rgba(30, 41, 59, 0.5);
-            position: relative; overflow: hidden; height: 100%;
-        }
-        .dashboard-widget::after {
-            content: ''; position: absolute; top: -50%; right: -50%;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
-            transform: rotate(45deg);
-        }
+        .pipeline-line { position: absolute; top: 38px; left: 10%; right: 10%; height: 2px; background: #e2e8f0; z-index: 1; }
+        .alert-card { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 12px; padding: 15px; display: flex; gap: 15px; margin-bottom: 10px; align-items: center; }
+        .alert-icon-box { width: 40px; height: 40px; background: #fef3c7; color: #d97706; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .dashboard-widget { background: #1e293b; border-radius: 20px; padding: 30px; color: white; box-shadow: 0 20px 50px -10px rgba(30, 41, 59, 0.5); position: relative; overflow: hidden; height: 100%; }
         .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         .live-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 10px #22c55e; }
         .stat-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
@@ -220,10 +156,51 @@
         .progress-track { width: 100%; height: 6px; background: #334155; border-radius: 10px; margin-top: 5px; overflow: hidden; }
         .progress-fill { height: 100%; border-radius: 10px; }
 
-        /* Marketing */
-        .mkt-card { background: linear-gradient(135deg, #fff 0%, #fff1f2 100%); border: 1px solid #ffe4e6; }
-        .mkt-icon { color: var(--mkt-primary); font-size: 2rem; margin-bottom: 15px; }
-        .mkt-list li i { color: var(--mkt-primary); }
+        /* --- MARKETING SECTION (New Updates) --- */
+        .mkt-sec { background: white; }
+        .mkt-card { background: white; border: 1px solid #ffe4e6; transition: 0.3s; height: 100%; }
+        .mkt-card:hover { border-color: var(--mkt-primary); box-shadow: 0 15px 30px rgba(239, 68, 68, 0.1); }
+        .mkt-icon { color: var(--mkt-primary); font-size: 1.8rem; margin-bottom: 15px; background: var(--mkt-bg); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        
+        .timeline-box {
+            background: #1e293b; color: white; padding: 30px; border-radius: 20px;
+            margin-bottom: 40px; position: relative; overflow: hidden;
+        }
+        .timeline-box::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--mkt-primary); }
+        
+        .strategy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+        .strategy-item { background: #f8fafc; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #e2e8f0; }
+        .strategy-item i { font-size: 2rem; color: var(--mkt-primary); margin-bottom: 15px; display: block; }
+        .strategy-item h4 { font-size: 1.1rem; margin-bottom: 10px; }
+        .strategy-item ul { text-align: right; list-style: none; font-size: 0.9rem; color: #64748b; }
+        .strategy-item ul li::before { content: '•'; color: var(--mkt-primary); margin-left: 5px; font-weight: bold; }
+
+        /* ROI Visual - UPDATED TEXT COLOR */
+        .roi-container { display: flex; align-items: flex-end; gap: 20px; margin-top: 30px; height: 150px; background: #fef2f2; padding: 20px; border-radius: 15px; border: 1px dashed var(--mkt-primary); }
+        .roi-bar { 
+            width: 50px; 
+            background: #cbd5e1; 
+            border-radius: 10px 10px 0 0; 
+            position: relative; 
+            transition: 1s ease; 
+            display: flex; 
+            align-items: flex-end; 
+            justify-content: center; 
+            padding-bottom: 10px; 
+            font-weight: 800; 
+            font-size: 0.85rem; 
+            color: #1e293b; /* <-- CHANGED FROM WHITE TO DARK BLUE */
+        }
+        .roi-bar.cost { height: 15%; background: #ef4444; }
+        .roi-bar.value { height: 0%; animation: growBar 2s forwards 1s; background: #10b981; flex-grow: 1; max-width: 150px; }
+        @keyframes growBar { to { height: 100%; } }
+        
+        .quote-box {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            color: white; padding: 40px; border-radius: 20px; text-align: center;
+            margin-top: 50px; position: relative;
+        }
+        .quote-icon { font-size: 3rem; opacity: 0.2; position: absolute; top: 20px; right: 20px; }
 
         /* Web Section */
         .web-sec { background: linear-gradient(180deg, #f8fafc 0%, #f0f9ff 100%); }
@@ -276,18 +253,7 @@
             .team-names-container { font-size: 1.2rem; display: flex; flex-direction: column; gap: 10px; }
             .divider { display: none; }
             .team-box { width: 100%; }
-        }
-
-        /* Animations */
-        @keyframes float { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-20px);} }
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .reveal.active .stat-fill.w-85 { width: 85%; }
-        .reveal.active .stat-fill.w-90 { width: 90%; }
-        .reveal.active .stat-fill.w-70 { width: 70%; }
-
-        /* --- MOBILE RESPONSIVE RULES --- */
-        @media(max-width: 768px) {
+            .strategy-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2.2rem; }
             .hero-sub { font-size: 1.1rem; }
             .section-title h2 { font-size: 2rem; }
@@ -300,6 +266,15 @@
             .pipeline-container { flex-wrap: wrap; gap: 10px; }
             .pipeline-line { display: none; }
         }
+
+        /* Animations */
+        @keyframes float { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-20px);} }
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal.active .stat-fill.w-85 { width: 85%; }
+        .reveal.active .stat-fill.w-90 { width: 90%; }
+        .reveal.active .stat-fill.w-70 { width: 70%; }
+
     </style>
 </head>
 <body>
@@ -590,26 +565,111 @@
         
             </div>
         </section>
+
         <section class="mkt-sec reveal">
             <div class="section-title">
                 <h2>التسويق (Marketing)</h2>
-                <p>وقود الانطلاق في 2026</p>
+                <p>وقود الانطلاق وحماية السوق في 2026</p>
             </div>
+
+            <div class="timeline-box">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h3 style="color: #fca5a5; margin-bottom: 5px;">2011 - 2025</h3>
+                        <p style="opacity: 0.8; font-size: 0.9rem;">الاعتماد على العلاقات + السمعة فقط</p>
+                    </div>
+                    <i class="fas fa-arrow-left" style="font-size: 2rem; color: var(--mkt-primary);"></i>
+                    <div style="text-align: left;">
+                        <h3 style="color: #fff; margin-bottom: 5px;">2026 المستقبل</h3>
+                        <p style="opacity: 0.8; font-size: 0.9rem;">Digital Presence + Market Leader</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px;">
+                    <i class="fas fa-exclamation-circle" style="color: #fca5a5; margin-left: 5px;"></i>
+                    <strong>الخطر الحالي:</strong> العميل الجديد يبحث "أونلاين" أولاً. إذا لم يجد CATE، سيذهب لمنافسين (أقل جودة ولكن أعلى صوتاً).
+                </div>
+            </div>
+
             <div class="grid-2">
                 <div class="card mkt-card">
-                    <div class="mkt-icon"><i class="fas fa-question"></i></div>
-                    <h3>لماذا التسويق الآن؟</h3>
-                    <p>في 2025، التسويق بدون (CRM/Website) كان هدراً للمال. الآن، نحن نمتلك "الماكينة" الجاهزة لاستقبال العملاء.</p>
+                    <div class="mkt-icon"><i class="fas fa-chess"></i></div>
+                    <h3>أولاً: الاستراتيجية (Brand Strategy)</h3>
+                    <p>نحن لا نسوق "منتج"، نحن نعيد تقديم CATE للسوق كـ <strong>Industrial Solution Provider</strong>.</p>
+                    
+                    <div class="strategy-grid">
+                        <div class="strategy-item">
+                            <i class="fab fa-linkedin"></i>
+                            <h4>Digital</h4>
+                            <ul>
+                                <li>LinkedIn (B2B)</li>
+                                <li>SEO & Search</li>
+                            </ul>
+                        </div>
+                        <div class="strategy-item">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Offline</h4>
+                            <ul>
+                                <li>Workshops</li>
+                                <li>Exhibitions</li>
+                            </ul>
+                        </div>
+                        <div class="strategy-item">
+                            <i class="fas fa-medal"></i>
+                            <h4>Loyalty</h4>
+                            <ul>
+                                <li>VIP Clients</li>
+                                <li>Free Checkups</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="card mkt-card">
-                    <div class="mkt-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>أهمية التسويق في 2026</h3>
-                    <ul class="custom-list mkt-list">
-                        <li><i class="fas fa-bullseye"></i> <div><strong>الاستحواذ:</strong> الوصول لشرائح عملاء جديدة.</div></li>
-                        <li><i class="fas fa-tags"></i> <div><strong>تبرير السعر:</strong> الظهور بمظهر الخبير.</div></li>
-                        <li><i class="fas fa-funnel-dollar"></i> <div><strong>تغذية الـ CRM:</strong> ضخ عملاء جدد.</div></li>
+
+                <div class="card mkt-card" style="border-top: 5px solid #10b981;">
+                    <div class="mkt-icon" style="background:#d1fae5; color:#10b981;"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>ثانياً: العرض المالي (Operational)</h3>
+                    <p>ماذا سنقدم شهرياً مقابل <strong>20,000 ج.م</strong>؟</p>
+                    
+                    <ul class="custom-list" style="margin-top: 25px;">
+                        <li><i class="fas fa-check-circle" style="color:#10b981;"></i> <strong>30 منشور شهرياً:</strong> (تعليمي - توعوي - قصص نجاح) للرد على اعتراضات العميل قبل البيع.</li>
+                        <li><i class="fas fa-video" style="color:#10b981;"></i> <strong>2 فيديو احترافي:</strong> (Motion Graphics أو Testimonials).</li>
+                        <li><i class="fas fa-chart-pie" style="color:#10b981;"></i> <strong>تقارير شهرية:</strong> تحليل الأداء والنتائج.</li>
                     </ul>
+
+                    <div class="roi-container">
+                        <div style="flex:1;">
+                            <strong style="display:block; color:#1e293b; margin-bottom:5px;">العائد (ROI)</strong>
+                            <p style="font-size:0.8rem; color:#64748b;">صفقة صناعية واحدة تغطي تكلفة التسويق لعام كامل.</p>
+                        </div>
+                        <div class="roi-bar cost">التكلفة</div>
+                        <div class="roi-bar value">قيمة صفقة واحدة</div>
+                    </div>
                 </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <h3 style="text-align: center; margin-bottom: 30px;">ثالثاً: العائد على الاستثمار (Why Now ?)</h3>
+                <div class="grid-2">
+                    <div class="card" style="background: #f8fafc; border:none;">
+                        <ul class="custom-list">
+                            <li><i class="fas fa-shield-alt" style="color:#ef4444; font-size:1.2rem;"></i> <strong>حماية السوق:</strong> العميل سيفهم الفرق بين (Original vs Fake) و (Agent vs Trader).</li>
+                            <li><i class="fas fa-funnel-dollar" style="color:#ef4444; font-size:1.2rem;"></i> <strong>زيادة RFQs:</strong> وصول Leads جاهزة للشراء، مما يسهل مهمة المبيعات.</li>
+                        </ul>
+                    </div>
+                    <div class="card" style="background: #f8fafc; border:none;">
+                        <ul class="custom-list">
+                            <li><i class="fas fa-tag" style="color:#ef4444; font-size:1.2rem;"></i> <strong>تقوية التسعير:</strong> البراند القوي يبيع بسعر أعلى ويتفاوض أقل.</li>
+                            <li><i class="fas fa-university" style="color:#ef4444; font-size:1.2rem;"></i> <strong>بناء أصل (Asset):</strong> المحتوى الذي ننتجه اليوم يعيش لسنوات ويخدم المبيعات والـ HR.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-box reveal">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <h3 style="font-size: 1.5rem; line-height: 1.6;">
+                    "CATE نجحت 14 سنة بدون Marketing...<br>
+                    لكن السوق الآن يحتاج أن يكون هذا النجاح <span style="text-decoration: underline;">مرئياً</span> لحماية اسمنا وزيادة حصتنا."
+                </h3>
             </div>
         </section>
 
