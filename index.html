@@ -26,9 +26,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-        html {
-            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape on iPhone */
-        }
+        html { -webkit-text-size-adjust: 100%; }
 
         body {
             font-family: 'Cairo', sans-serif;
@@ -36,13 +34,11 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased; /* Crisper text on iOS */
+            -webkit-font-smoothing: antialiased;
         }
 
         /* --- HERO SECTION --- */
         header {
-            min-height: 100vh;
-            /* Support for new iOS dynamic viewport units */
             min-height: 100dvh; 
             background: linear-gradient(-45deg, #0f172a, #1e3a8a, #4338ca, #312e81);
             background-size: 400% 400%;
@@ -66,8 +62,7 @@
         .hero-icon-box {
             width: 120px; height: 120px;
             background: rgba(255, 255, 255, 0.1);
-            -webkit-backdrop-filter: blur(10px); /* Safari support */
-            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid rgba(255,255,255,0.2);
@@ -99,11 +94,11 @@
         .crm-sec h2::after { background: var(--crm-primary); }
         .mkt-sec h2::after { background: var(--mkt-primary); }
 
-        /* Grids - Optimized for Desktop First, overridden in Media Queries */
+        /* Grids */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        /* Pyramid Grid for Website */
+        /* Pyramid Grid */
         .web-grid-pyramid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .span-center { grid-column: span 2; width: 100%; max-width: 500px; margin: 0 auto; }
 
@@ -119,7 +114,7 @@
         
         ul.custom-list { list-style: none; margin-top: 15px; }
         ul.custom-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; }
-        ul.custom-list li i { margin-top: 7px; font-size: 0.9rem; flex-shrink: 0; /* Prevents icon shrinking on mobile */ } 
+        ul.custom-list li i { margin-top: 7px; font-size: 0.9rem; flex-shrink: 0; } 
         ul.custom-list li strong { color: var(--text-main); font-weight: 700; }
 
         /* --- THEMES --- */
@@ -180,11 +175,29 @@
         .strategy-item ul { text-align: right; list-style: none; font-size: 0.9rem; color: #64748b; }
         .strategy-item ul li::before { content: '•'; color: var(--mkt-primary); margin-left: 5px; font-weight: bold; }
 
-        /* ROI Visual */
-        .roi-container { display: flex; align-items: flex-end; gap: 20px; margin-top: 30px; height: 150px; background: #fef2f2; padding: 20px; border-radius: 15px; border: 1px dashed var(--mkt-primary); }
+        /* --- ROI VISUAL UPDATED (FLEXIBLE) --- */
+        .roi-container { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 30px; 
+            background: #fef2f2; 
+            padding: 20px; 
+            border-radius: 15px; 
+            border: 1px dashed var(--mkt-primary); 
+        }
+        
+        .roi-text-area { flex: 1; padding-left: 20px; }
+        
+        .roi-chart-area { 
+            display: flex; 
+            align-items: flex-end; 
+            gap: 15px; 
+            height: 120px; 
+            min-width: 150px; 
+        }
+
         .roi-bar { 
             width: 50px; 
-            background: #cbd5e1; 
             border-radius: 10px 10px 0 0; 
             position: relative; 
             transition: 1s ease; 
@@ -195,9 +208,10 @@
             font-weight: 800; 
             font-size: 0.85rem; 
             color: #1e293b; 
+            text-align: center;
         }
-        .roi-bar.cost { height: 15%; background: #ef4444; }
-        .roi-bar.value { height: 0%; animation: growBar 2s forwards 1s; background: #10b981; flex-grow: 1; max-width: 150px; }
+        .roi-bar.cost { height: 30%; background: #ef4444; }
+        .roi-bar.value { height: 0%; animation: growBar 2s forwards 1s; background: #10b981; flex-grow: 1; }
         @keyframes growBar { to { height: 100%; } }
         
         .quote-box {
@@ -261,54 +275,53 @@
 
         /* --- MOBILE RESPONSIVE RULES (IPHONE OPTIMIZED) --- */
         @media(max-width: 768px) {
-            /* Typography Sizing */
             h1 { font-size: 2rem; }
             .hero-sub { font-size: 1rem; padding: 0 10px; }
             .section-title h2 { font-size: 1.8rem; }
             
-            /* Grids: Force Single Column for iPhone Safety */
-            .grid-2, .grid-3, .web-grid-pyramid { 
-                grid-template-columns: 1fr; 
-                gap: 20px; 
-            }
+            .grid-2, .grid-3, .web-grid-pyramid { grid-template-columns: 1fr; gap: 20px; }
             .span-center { grid-column: span 1; width: 100%; }
             .strategy-grid { grid-template-columns: 1fr; gap: 15px; }
             
-            /* Spacing */
             section { padding: 50px 0; }
-            .card, .web-card-container, .crm-intro-box, .dashboard-widget, .quote-box { 
-                padding: 25px 20px; 
-            }
+            .card, .web-card-container, .crm-intro-box, .dashboard-widget, .quote-box { padding: 25px 20px; }
             
-            /* CRM Logic */
             .crm-intro-box { flex-direction: column; text-align: center; }
             .crm-intro-icon { margin: 0 auto 20px; }
             
-            /* Pipeline */
-            .pipeline-container { 
-                flex-wrap: wrap; 
-                gap: 15px; 
-                justify-content: center;
-            }
-            .pipeline-step-item { flex: 0 0 45%; margin-bottom: 10px; } /* 2 items per row */
+            .pipeline-container { flex-wrap: wrap; gap: 15px; justify-content: center; }
+            .pipeline-step-item { flex: 0 0 45%; margin-bottom: 10px; }
             .pipeline-line { display: none; }
             
-            /* Team Box */
             .team-names-container { font-size: 1.1rem; display: flex; flex-direction: column; gap: 10px; }
             .divider { display: none; }
             .team-box { width: 100%; min-width: auto; padding: 30px 20px; }
             
-            /* ROI Chart Fix for Mobile */
+            /* --- FIXING ROI ON MOBILE (STACKED LAYOUT) --- */
             .roi-container { 
-                height: 180px; /* More height to avoid text squishing */
-                padding: 15px;
+                flex-direction: column; /* Stack Text top, Chart bottom */
+                padding: 20px;
+                height: auto;
             }
-            .roi-bar { 
-                font-size: 0.7rem; 
-                padding-bottom: 5px; 
+            .roi-text-area { 
+                padding-left: 0; 
+                margin-bottom: 25px; 
+                text-align: center;
+                border-bottom: 1px solid rgba(239, 68, 68, 0.2);
+                padding-bottom: 15px;
+            }
+            .roi-chart-area { 
+                width: 100%; 
+                min-width: auto;
+                justify-content: center;
+                height: 140px; /* Specific height for the chart part */
+            }
+            .roi-bar {
+                flex-grow: 1; /* Make bars wider on mobile */
+                max-width: 120px;
+                font-size: 0.75rem;
             }
             
-            /* Disable Hovers on Touch */
             .card:hover { transform: none; }
             .web-feature:hover { background: transparent; }
         }
@@ -673,12 +686,14 @@
                     </ul>
 
                     <div class="roi-container">
-                        <div style="flex:1;">
+                        <div class="roi-text-area">
                             <strong style="display:block; color:#1e293b; margin-bottom:5px;">العائد (ROI)</strong>
-                            <p style="font-size:0.8rem; color:#64748b;">صفقة صناعية واحدة تغطي تكلفة التسويق لعام كامل.</p>
+                            <p style="font-size:0.9rem; color:#64748b;">صفقة صناعية واحدة تغطي تكلفة التسويق لعام كامل.</p>
                         </div>
-                        <div class="roi-bar cost">التكلفة</div>
-                        <div class="roi-bar value">قيمة صفقة واحدة</div>
+                        <div class="roi-chart-area">
+                            <div class="roi-bar cost">التكلفة</div>
+                            <div class="roi-bar value">قيمة صفقة واحدة</div>
+                        </div>
                     </div>
                 </div>
             </div>
