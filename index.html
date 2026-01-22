@@ -81,11 +81,51 @@
         h1 span { background: linear-gradient(to right, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero-sub { font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin-bottom: 40px; }
 
+        /* --- NEW DEDICATION BOX STYLE --- */
+        .dedication-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            max-width: 90%;
+        }
+        .dedication-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fcd34d;
+            transform: translateY(-5px);
+        }
+        .dedication-icon {
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #78350f;
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+            flex-shrink: 0;
+        }
+        .dedication-text { text-align: right; }
+        .dedication-label {
+            display: block; font-size: 0.85rem; color: #cbd5e1;
+            margin-bottom: 3px; font-weight: 300;
+        }
+        .dedication-name {
+            display: block; font-size: 1.4rem; color: white;
+            font-weight: 800; line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
         /* --- LAYOUT --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         section { padding: 80px 0; }
         
-        /* --- NEW SECTION TITLE STYLING (DISTINCT HEADERS) --- */
+        /* Section Titles */
         .section-title { text-align: center; margin-bottom: 60px; }
         
         .section-title h2 { 
@@ -100,36 +140,12 @@
             border: 2px solid transparent;
         }
         
-        /* Specific Colors for Each Section Title */
-        .erp-sec .section-title h2 {
-            color: #d97706; /* Dark Orange */
-            background: #fffbeb;
-            border-color: #fcd34d;
-        }
-        
-        .profile-sec .section-title h2 {
-            color: #059669; /* Dark Green */
-            background: #ecfdf5;
-            border-color: #6ee7b7;
-        }
-
-        .web-sec .section-title h2 {
-            color: #0284c7; /* Dark Blue */
-            background: #f0f9ff;
-            border-color: #7dd3fc;
-        }
-
-        .crm-sec .section-title h2 {
-            color: #7c3aed; /* Dark Purple */
-            background: #f5f3ff;
-            border-color: #c4b5fd;
-        }
-
-        .mkt-sec .section-title h2 {
-            color: #dc2626; /* Dark Red */
-            background: #fef2f2;
-            border-color: #fca5a5;
-        }
+        /* Specific Colors */
+        .erp-sec .section-title h2 { color: #d97706; background: #fffbeb; border-color: #fcd34d; }
+        .profile-sec .section-title h2 { color: #059669; background: #ecfdf5; border-color: #6ee7b7; }
+        .web-sec .section-title h2 { color: #0284c7; background: #f0f9ff; border-color: #7dd3fc; }
+        .crm-sec .section-title h2 { color: #7c3aed; background: #f5f3ff; border-color: #c4b5fd; }
+        .mkt-sec .section-title h2 { color: #dc2626; background: #fef2f2; border-color: #fca5a5; }
 
         .section-title p { font-size: 1.1rem; color: #64748b; margin-top: 10px; font-weight: 500; }
 
@@ -308,7 +324,14 @@
             h1 { font-size: 2rem; }
             .hero-sub { font-size: 1rem; padding: 0 10px; }
             
-            /* Smaller Section Title on Mobile */
+            /* Responsive Dedication Box */
+            .dedication-box {
+                flex-direction: column; text-align: center; gap: 10px; padding: 15px;
+            }
+            .dedication-text { text-align: center; }
+            .dedication-name { font-size: 1.2rem; }
+            .dedication-icon { margin: 0 auto; width: 40px; height: 40px; font-size: 1.2rem; }
+
             .section-title h2 { font-size: 1.4rem; padding: 12px 25px; }
 
             .grid-2, .grid-3, .web-grid-pyramid { grid-template-columns: 1fr; gap: 20px; }
@@ -349,7 +372,17 @@
         <div class="hero-badge">CATE | Strategic Report</div>
         <h1>تقرير الأداء الاستراتيجي<br><span>وخارطة التحول الرقمي</span></h1>
         <p class="hero-sub">من عام التأسيس (2025) إلى عام الحصاد والنمو (2026)</p>
-        <p style="font-size: 1rem; opacity: 0.8; margin-top: 10px;">إلى السيد المهندس: عماد حامد – رئيس مجلس الإدارة</p>
+        
+        <div class="dedication-box">
+            <div class="dedication-icon">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="dedication-text">
+                <span class="dedication-label">مقدم إلى السيد المهندس</span>
+                <span class="dedication-name">عماد حامد – رئيس مجلس الإدارة</span>
+            </div>
+        </div>
+
         <i class="fas fa-chevron-down" style="margin-top: 50px; animation: float 2s infinite;"></i>
     </header>
 
