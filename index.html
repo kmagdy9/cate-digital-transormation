@@ -19,13 +19,13 @@
             --web-primary: #0284c7; --web-bg: #e0f2fe;
             --crm-primary: #7c3aed; --crm-bg: #f5f3ff;
             --mkt-primary: #ef4444; --mkt-bg: #fef2f2;
+            --pro-primary: #10b981; --pro-bg: #ecfdf5;
             
             --radius: 20px;
             --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
         html { -webkit-text-size-adjust: 100%; }
 
         body {
@@ -85,14 +85,53 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         section { padding: 80px 0; }
         
+        /* --- NEW SECTION TITLE STYLING (DISTINCT HEADERS) --- */
         .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; display: inline-block; position: relative; padding-bottom: 10px; }
-        .section-title h2::after { content: ''; display: block; width: 60%; height: 5px; background: #cbd5e1; margin: 10px auto 0; border-radius: 10px; }
         
-        .erp-sec h2::after { background: var(--erp-primary); }
-        .web-sec h2::after { background: var(--web-primary); }
-        .crm-sec h2::after { background: var(--crm-primary); }
-        .mkt-sec h2::after { background: var(--mkt-primary); }
+        .section-title h2 { 
+            font-size: 1.8rem; 
+            font-weight: 900;
+            display: inline-block; 
+            padding: 15px 40px;
+            border-radius: 50px;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            border: 2px solid transparent;
+        }
+        
+        /* Specific Colors for Each Section Title */
+        .erp-sec .section-title h2 {
+            color: #d97706; /* Dark Orange */
+            background: #fffbeb;
+            border-color: #fcd34d;
+        }
+        
+        .profile-sec .section-title h2 {
+            color: #059669; /* Dark Green */
+            background: #ecfdf5;
+            border-color: #6ee7b7;
+        }
+
+        .web-sec .section-title h2 {
+            color: #0284c7; /* Dark Blue */
+            background: #f0f9ff;
+            border-color: #7dd3fc;
+        }
+
+        .crm-sec .section-title h2 {
+            color: #7c3aed; /* Dark Purple */
+            background: #f5f3ff;
+            border-color: #c4b5fd;
+        }
+
+        .mkt-sec .section-title h2 {
+            color: #dc2626; /* Dark Red */
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        .section-title p { font-size: 1.1rem; color: #64748b; margin-top: 10px; font-weight: 500; }
 
         /* Grids */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; }
@@ -175,7 +214,7 @@
         .strategy-item ul { text-align: right; list-style: none; font-size: 0.9rem; color: #64748b; }
         .strategy-item ul li::before { content: '•'; color: var(--mkt-primary); margin-left: 5px; font-weight: bold; }
 
-        /* --- ROI VISUAL UPDATED (FLEXIBLE) --- */
+        /* ROI Visual (Mobile Optimized) */
         .roi-container { 
             display: flex; 
             justify-content: space-between; 
@@ -185,17 +224,8 @@
             border-radius: 15px; 
             border: 1px dashed var(--mkt-primary); 
         }
-        
         .roi-text-area { flex: 1; padding-left: 20px; }
-        
-        .roi-chart-area { 
-            display: flex; 
-            align-items: flex-end; 
-            gap: 15px; 
-            height: 120px; 
-            min-width: 150px; 
-        }
-
+        .roi-chart-area { display: flex; align-items: flex-end; gap: 15px; height: 120px; min-width: 150px; }
         .roi-bar { 
             width: 50px; 
             border-radius: 10px 10px 0 0; 
@@ -277,8 +307,10 @@
         @media(max-width: 768px) {
             h1 { font-size: 2rem; }
             .hero-sub { font-size: 1rem; padding: 0 10px; }
-            .section-title h2 { font-size: 1.8rem; }
             
+            /* Smaller Section Title on Mobile */
+            .section-title h2 { font-size: 1.4rem; padding: 12px 25px; }
+
             .grid-2, .grid-3, .web-grid-pyramid { grid-template-columns: 1fr; gap: 20px; }
             .span-center { grid-column: span 1; width: 100%; }
             .strategy-grid { grid-template-columns: 1fr; gap: 15px; }
@@ -297,30 +329,11 @@
             .divider { display: none; }
             .team-box { width: 100%; min-width: auto; padding: 30px 20px; }
             
-            /* --- FIXING ROI ON MOBILE (STACKED LAYOUT) --- */
-            .roi-container { 
-                flex-direction: column; /* Stack Text top, Chart bottom */
-                padding: 20px;
-                height: auto;
-            }
-            .roi-text-area { 
-                padding-left: 0; 
-                margin-bottom: 25px; 
-                text-align: center;
-                border-bottom: 1px solid rgba(239, 68, 68, 0.2);
-                padding-bottom: 15px;
-            }
-            .roi-chart-area { 
-                width: 100%; 
-                min-width: auto;
-                justify-content: center;
-                height: 140px; /* Specific height for the chart part */
-            }
-            .roi-bar {
-                flex-grow: 1; /* Make bars wider on mobile */
-                max-width: 120px;
-                font-size: 0.75rem;
-            }
+            /* ROI Mobile Fix */
+            .roi-container { flex-direction: column; padding: 20px; height: auto; }
+            .roi-text-area { padding-left: 0; margin-bottom: 25px; text-align: center; border-bottom: 1px solid rgba(239, 68, 68, 0.2); padding-bottom: 15px; }
+            .roi-chart-area { width: 100%; min-width: auto; justify-content: center; height: 140px; }
+            .roi-bar { flex-grow: 1; max-width: 120px; font-size: 0.75rem; }
             
             .card:hover { transform: none; }
             .web-feature:hover { background: transparent; }
@@ -388,9 +401,9 @@
             </div>
         </section>
 
-        <section class="reveal">
+        <section class="profile-sec reveal">
             <div class="section-title">
-                <h2 style="border-bottom-color: #10b981;">الهوية والمرئيات</h2>
+                <h2>الهوية والمرئيات</h2>
             </div>
             <div class="grid-2">
                 <div class="card profile-card">
